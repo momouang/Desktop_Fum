@@ -1,0 +1,16 @@
+<linker>
+	<assembly fullname="Assembly-CSharp" ignoreIfMissing="1">
+		<type fullname="CloseWindow">
+			<method name="DestroyWindow"/>
+			<method name="DestroyWindow"/>
+			<method name="DestroyWindow"/>
+			<method name="DestroyWindow"/>
+			<method name="ShutDown"/>
+			<method name="ShutDown"/>
+		</type>
+		<type fullname="OpenWindow">
+			<method name="openWindow"/>
+			<method name="openWindow"/>
+		</type>
+	</assembly>
+</linker>

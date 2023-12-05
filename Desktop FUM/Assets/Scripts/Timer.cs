@@ -36,8 +36,18 @@ public class Timer : MonoBehaviour
 
     void NormalTimer()
     {
-        string realtime = System.DateTime.Now.Hour.ToString() + ":" + System.DateTime.Now.Minute.ToString();
-        displayTime(realtime);
+        //string realtime = string.Format("{0:00}:{1:00}", System.DateTime.Now.Hour, System.DateTime.Now.Minute);
+        if(System.DateTime.Now.Hour < 12)
+        {
+            string realtime = string.Format("{0:00}:{1:00}", System.DateTime.Now.Hour, System.DateTime.Now.Minute + " " + "AM");
+            displayTime(realtime);
+        }
+        else
+        {
+            string realtime = string.Format("{0:00}:{1:00}", System.DateTime.Now.Hour -12, System.DateTime.Now.Minute + " " + "PM");
+            displayTime(realtime);
+        }
+        
     }
 
     void CountDownTimer()

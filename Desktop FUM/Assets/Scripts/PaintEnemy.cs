@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PaintEnemy : MonoBehaviour
 {
-    public float minWidth;
-    public float maxWidth;
-    public float minHeight;
-    public float maxHeight;
+    public RectTransform minWidth;
+    public RectTransform maxWidth;
+    public RectTransform minHeight;
+    public RectTransform maxHeight;
 
     public Transform parent;
     public GameObject dirt; 
@@ -45,7 +45,7 @@ public class PaintEnemy : MonoBehaviour
         while(true)
         {
             yield return new WaitForSeconds(2);
-            destination = new Vector3(Random.Range(minWidth, maxWidth), Random.Range(minHeight, maxHeight), 0);
+            destination = new Vector3(Random.Range(minWidth.position.x, maxWidth.position.x), Random.Range(minHeight.position.y, maxHeight.position.y), 0);
 
             Instantiate(dirt, gameObject.transform.position, Quaternion.identity,parent);
         }

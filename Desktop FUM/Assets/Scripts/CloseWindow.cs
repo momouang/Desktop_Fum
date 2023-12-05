@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CloseWindow : MonoBehaviour
 {
+
+    public float closeCount;
+
     public void ShutDown()
     {
         gameObject.SetActive(false);

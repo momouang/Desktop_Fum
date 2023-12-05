@@ -15,14 +15,16 @@ public class ErrorManager : MonoBehaviour
     public float timer;
     public bool isSpawn = false;
 
+    public CloseWindow closeWindow;
+
     public Image[] errorWindow;
 
-    float count;
+    public float count;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        count = 0f;
     }
 
     // Update is called once per frame
@@ -33,7 +35,7 @@ public class ErrorManager : MonoBehaviour
             StartSpawning();
         }
 
-        if(Input.GetKeyDown(KeyCode.LeftShift))
+        if(closeWindow.closeCount > count || Input.GetKeyDown(KeyCode.LeftShift))
         {
             isSpawn = false;
         }
@@ -54,6 +56,7 @@ public class ErrorManager : MonoBehaviour
             yield return new WaitForSeconds(1);
             //instantiate here
             Instantiate(errorWindow[0],new Vector3 (Random.Range(minWidth,maxWidth),Random.Range(minHeight,maxHeight),minDepth),Quaternion.identity,parentCanvas);
+            count += 1;
             
             minDepth -= 0.01f;
         }

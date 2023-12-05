@@ -7,7 +7,13 @@ public class PaintPlayer : MonoBehaviour
     public float speed = 1f;
     public float damageCount = 3;
     public GameObject enemy;
-    public GameObject dirtGroup;
+    public GameObject drawings;
+
+    public Transform minHeight;
+    public Transform maxHeight;
+    public Transform minWidth;
+    public Transform maxWidth;
+
     Rigidbody2D rb;
 
     // Update is called once per frame
@@ -20,11 +26,11 @@ public class PaintPlayer : MonoBehaviour
     {
         Vector3 currentPosition = gameObject.transform.position;
         Vector3 targetPosition = currentPosition + new Vector3 (Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"),0) * speed;
-        targetPosition.x = Mathf.Clamp(targetPosition.x,-3.31f,4.41f);
-        targetPosition.y = Mathf.Clamp(targetPosition.y, -1.70f, 1.66f);
+        targetPosition.x = Mathf.Clamp(targetPosition.x,minWidth.position.x,maxWidth.position.x);
+        targetPosition.y = Mathf.Clamp(targetPosition.y, minHeight.position.y, maxHeight.position.y);
         gameObject.transform.position = targetPosition;
 
-        Debug.Log(targetPosition);
+        //Debug.Log(targetPosition);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -36,7 +42,8 @@ public class PaintPlayer : MonoBehaviour
             if(damageCount <= 0)
             {
                 Destroy(enemy);
-                Destroy(dirtGroup);
+                Destroy(drawings);
+                Destroy(gameObject);
             }
         }
     }
