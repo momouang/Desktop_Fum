@@ -5,10 +5,6 @@ using UnityEngine;
 public class PaintPlayer : MonoBehaviour
 {
     public float speed = 1f;
-    public float damageCount = 3;
-    public GameObject enemy;
-    public GameObject drawings;
-
     public Transform minHeight;
     public Transform maxHeight;
     public Transform minWidth;
@@ -33,18 +29,5 @@ public class PaintPlayer : MonoBehaviour
         //Debug.Log(targetPosition);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        //Debug.Log("Hitting");
-        if(collision.gameObject.CompareTag("Enemy"))
-        {
-            damageCount--;
-            if(damageCount <= 0)
-            {
-                Destroy(enemy);
-                Destroy(drawings);
-                Destroy(gameObject);
-            }
-        }
-    }
+
 }

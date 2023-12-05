@@ -55,7 +55,7 @@ public class ErrorManager : MonoBehaviour
         {
             yield return new WaitForSeconds(1);
             //instantiate here
-            Instantiate(errorWindow[0],new Vector3 (Random.Range(minWidth,maxWidth),Random.Range(minHeight,maxHeight),minDepth),Quaternion.identity,parentCanvas);
+            Instantiate(errorWindow[Random.Range(0,1)],new Vector3 (Random.Range(minWidth,maxWidth),Random.Range(minHeight,maxHeight),minDepth),Quaternion.identity,parentCanvas);
             count += 1;
             
             minDepth -= 0.01f;

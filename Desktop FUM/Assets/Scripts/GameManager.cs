@@ -7,12 +7,12 @@ public class GameManager : MonoBehaviour
 {
     public GameObject paintWindow;
     public Button paintButton;
-    public PaintPlayer player;
+    public PaintEnemy enemy;
 
     // Update is called once per frame
     void Update()
     {
-        if(player.damageCount <= 0)
+        if(enemy.damageCount <= 0)
         {
             endPaintGame();
         }

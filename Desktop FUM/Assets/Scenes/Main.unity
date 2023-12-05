@@ -197,10 +197,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ca67231d98aa471fb76fb8b0ffee6fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minWidth: {fileID: 0}
-  maxWidth: {fileID: 0}
-  minHeight: {fileID: 0}
-  maxHeight: {fileID: 0}
+  minWidth: {fileID: 1187040033}
+  maxWidth: {fileID: 57321589}
+  minHeight: {fileID: 1035443250}
+  maxHeight: {fileID: 1763365736}
+  damageCount: 3
+  player: {fileID: 1036665508}
+  drawings: {fileID: 1219883315}
   parent: {fileID: 455597159}
   dirt: {fileID: 1765168774}
   speed: 3
@@ -882,7 +885,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &320466952
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1969,6 +1972,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7934890228261346420, guid: 14f708eb760204c5492f662cbc268199, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8e1f83d21694a46e5b49a04842357814, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14f708eb760204c5492f662cbc268199, type: 3}
 --- !u!1 &963194225
@@ -2107,7 +2114,7 @@ GameObject:
   - component: {fileID: 1036665514}
   m_Layer: 5
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
