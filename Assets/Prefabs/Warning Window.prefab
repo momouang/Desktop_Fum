@@ -357,8 +357,8 @@ GameObject:
   - component: {fileID: 7086195420989277916}
   - component: {fileID: 7086195420989277919}
   - component: {fileID: 7086195420989277918}
-  - component: {fileID: 7086195420989277905}
   - component: {fileID: 9057808480832878958}
+  - component: {fileID: -9142774861681022277}
   m_Layer: 5
   m_Name: Warning Window
   m_TagString: Error Window
@@ -430,19 +430,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7086195420989277905
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7086195420989277904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 509ef41db3b25482b885d5ff9134ce78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  closeCount: 0
 --- !u!114 &9057808480832878958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -456,6 +443,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCanvas: {fileID: 0}
+--- !u!114 &-9142774861681022277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7086195420989277904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3ffee85653614e6db305d8a6ae5fff4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closeCount: 0
 --- !u!1001 &693279794602678168
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -478,7 +478,7 @@ PrefabInstance:
     - target: {fileID: 2343281460392281284, guid: b294acd7cdd1a4641a2182b7154b961c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 7086195420989277905}
+      objectReference: {fileID: -9142774861681022277}
     - target: {fileID: 2343281460392281284, guid: b294acd7cdd1a4641a2182b7154b961c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -489,7 +489,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2343281460392281284, guid: b294acd7cdd1a4641a2182b7154b961c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: CloseWindow, Assembly-CSharp
+      value: ErrorWindowClose, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2343281460392281284, guid: b294acd7cdd1a4641a2182b7154b961c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -608,14 +608,14 @@ PrefabInstance:
     - target: {fileID: 4069638088131502442, guid: 47d7ae2c2f1064e3ca2eef3bc30c7996, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 7086195420989277905}
+      objectReference: {fileID: -9142774861681022277}
     - target: {fileID: 4069638088131502442, guid: 47d7ae2c2f1064e3ca2eef3bc30c7996, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: DestroyWindow
       objectReference: {fileID: 0}
     - target: {fileID: 4069638088131502442, guid: 47d7ae2c2f1064e3ca2eef3bc30c7996, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: CloseWindow, Assembly-CSharp
+      value: ErrorWindowClose, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4966893097669580410, guid: 47d7ae2c2f1064e3ca2eef3bc30c7996, type: 3}
       propertyPath: m_Pivot.x
@@ -740,7 +740,7 @@ PrefabInstance:
     - target: {fileID: 2343281460392281284, guid: b294acd7cdd1a4641a2182b7154b961c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 7086195420989277905}
+      objectReference: {fileID: -9142774861681022277}
     - target: {fileID: 2343281460392281284, guid: b294acd7cdd1a4641a2182b7154b961c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -751,7 +751,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2343281460392281284, guid: b294acd7cdd1a4641a2182b7154b961c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: CloseWindow, Assembly-CSharp
+      value: ErrorWindowClose, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2343281460392281284, guid: b294acd7cdd1a4641a2182b7154b961c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

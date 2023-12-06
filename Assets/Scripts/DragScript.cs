@@ -12,6 +12,7 @@ public class DragScript : MonoBehaviour, IPointerDownHandler, IBeginDragHandler,
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
+        myCanvas = transform.parent.GetComponent<Canvas>();
     }
 
     public void OnBeginDrag(PointerEventData eventData)

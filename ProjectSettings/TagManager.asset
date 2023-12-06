@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Error Window
+  - Destroy Point
   layers:
   - Default
   - TransparentFX

@@ -12,7 +12,7 @@ public class CloseWindow : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void DestroyWindow()
+    virtual public void DestroyWindow()
     {
         Destroy(gameObject);
     }

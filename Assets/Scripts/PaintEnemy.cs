@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class PaintEnemy : MonoBehaviour
 {
-    public Color32 color;
     public RectTransform minWidth;
     public RectTransform maxWidth;
     public RectTransform minHeight;
@@ -21,11 +20,12 @@ public class PaintEnemy : MonoBehaviour
     Rigidbody2D rb;
     public Vector3 destination;
 
+    public DrawMesh drawMesh;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
-        color = gameObject.GetComponent<Image>().color;
     }
 
     private void OnEnable()
@@ -51,18 +51,20 @@ public class PaintEnemy : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             damageCount--;
-            color = new Color32(250,0,0,100);
+            GetComponent<Image>().color = Color.red;
             if (damageCount <= 0)
             {
+                drawMesh.endGame = true;
                 Destroy(player);
                 Destroy(drawings);
                 Destroy(gameObject);
             }
         }
-        else
-        {
-            color = new Color32(255,255,255, 100);
-        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        GetComponent<Image>().color = Color.white;
     }
 
     IEnumerator ChangeDestination()

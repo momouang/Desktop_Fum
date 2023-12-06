@@ -8,9 +8,11 @@ public class DrawMesh : MonoBehaviour
     private Vector3 LastMousePosition;
     public bool isDrawing = false;
 
+    public bool endGame;
+
     private void Update()
     {
-        if(isDrawing)
+        if(isDrawing && endGame)
         {
             Draw();
         }
@@ -75,7 +77,7 @@ public class DrawMesh : MonoBehaviour
 
                 Vector3 mouseForwardVector = (GetMouseWorldPosition() - LastMousePosition).normalized;
                 Vector3 normal2D = new Vector3(0, 0, -1f);
-                float lineThickness = 0.1f;
+                float lineThickness = 0.05f;
                 Vector3 newVertexUp = GetMouseWorldPosition() + Vector3.Cross(mouseForwardVector, normal2D) * lineThickness;
                 Vector3 newVertexDown = GetMouseWorldPosition() + Vector3.Cross(mouseForwardVector, normal2D * -1f) * lineThickness;
 
