@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Events;
+using System;
 
 
 public class Timer : MonoBehaviour
 {
     [SerializeField]
-    float currentTime;
+    public float currentTime;
     public float targetTime;
     public TMP_Text text;
     public bool isCounting;
@@ -36,8 +37,11 @@ public class Timer : MonoBehaviour
 
     void NormalTimer()
     {
+        DateTime dt = DateTime.Now;
+        text.text = dt.GetDateTimeFormats('t')[0].ToString();
+
         //string realtime = string.Format("{0:00}:{1:00}", System.DateTime.Now.Hour, System.DateTime.Now.Minute);
-        if(System.DateTime.Now.Hour < 12)
+        /*if (System.DateTime.Now.Hour < 12)
         {
             string realtime = string.Format("{0:00}:{1:00}", System.DateTime.Now.Hour, System.DateTime.Now.Minute + " " + "AM");
             displayTime(realtime);
@@ -46,7 +50,7 @@ public class Timer : MonoBehaviour
         {
             string realtime = string.Format("{0:00}:{1:00}", System.DateTime.Now.Hour -12, System.DateTime.Now.Minute + " " + "PM");
             displayTime(realtime);
-        }
+        }*/
         
     }
 

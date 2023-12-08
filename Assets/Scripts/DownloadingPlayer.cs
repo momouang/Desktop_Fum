@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class DownloadingPlayer : MonoBehaviour
 {
+    public DownloadManager downloadManager;
 
     public float speed = 1f;
     public Transform minWidth;
     public Transform maxWidth;
 
+    Animator anim;
 
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
     void Update()
     {
         Move();
+
+        if(downloadManager.collected == 1)
+        {
+            anim.SetTrigger("Catched");
+        }
     }
 
     void Move()

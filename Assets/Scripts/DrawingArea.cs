@@ -11,12 +11,12 @@ public class DrawingArea : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public void OnPointerEnter(PointerEventData eventData)
     {
         drawMesh.isDrawing = true;
-        Debug.Log("IN");
+        //Debug.Log("IN");
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         drawMesh.isDrawing = false;
-        Debug.Log("OUT");
+        //Debug.Log("OUT");
     }
 }

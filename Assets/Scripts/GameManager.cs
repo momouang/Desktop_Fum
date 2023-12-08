@@ -1,32 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject paintWindow;
-    public Button paintButton;
-    public PaintEnemy enemy;
 
-    // Update is called once per frame
-    void Update()
+    public void startGame()
     {
-        if(enemy.damageCount <= 0)
-        {
-            endPaintGame();
-        }
+        SceneManager.LoadScene(1);
     }
 
-    public void openPaintWindow()
+    public void FailedGame()
     {
-        //paintWindow.SetActive(true);
-        paintButton.interactable = false;
+        SceneManager.LoadScene(2);
     }
 
-
-    void endPaintGame()
+    public void Restart()
     {
-        paintButton.interactable = true;
+        SceneManager.LoadScene(0);
     }
 }

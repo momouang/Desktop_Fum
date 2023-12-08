@@ -21,19 +21,15 @@ public class Documents : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
 
-    private void FixedUpdate()
-    {
-        downloadManager.addPoints = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            downloadManager.collected ++;
-            downloadManager.addPoints = true;
+            downloadManager.addProgress();
+            downloadManager.collected++;
             Destroy(gameObject);
         }
     }

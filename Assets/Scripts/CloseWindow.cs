@@ -16,4 +16,5 @@ public class CloseWindow : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
 }
