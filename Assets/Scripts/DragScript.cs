@@ -18,6 +18,7 @@ public class DragScript : MonoBehaviour, IPointerDownHandler, IBeginDragHandler,
     public void OnBeginDrag(PointerEventData eventData)
     {
         //Debug.Log("Start Drag");
+        gameObject.transform.SetAsLastSibling();
     }
 
     public void OnDrag(PointerEventData eventData)
