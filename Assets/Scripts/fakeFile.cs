@@ -7,6 +7,19 @@ public class fakeFile : MonoBehaviour
     public Transform destroyPoint;
     public DownloadManager downloadManager;
 
+    private void OnEnable() {
+        DownloadManager.DownloadWindowClosed+=OnWindowClosed;
+    }
+
+    private void OnDisable() {
+        DownloadManager.DownloadWindowClosed-=OnWindowClosed;
+    }
+
+    void OnWindowClosed()
+    {
+        Destroy(gameObject);
+    }
+
     private void Start()
     {
         destroyPoint = GameObject.FindGameObjectWithTag("Destroy Point").transform;

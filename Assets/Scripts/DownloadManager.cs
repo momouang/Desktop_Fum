@@ -6,6 +6,7 @@ using TMPro;
 
 public class DownloadManager : MonoBehaviour
 {
+    public static event System.Action DownloadWindowClosed;
     public GameObject[] documents;
 
     [Header("Timer")]
@@ -87,6 +88,12 @@ public class DownloadManager : MonoBehaviour
         }
     }
 
+    public void WindowClosedEvent()
+    {
+        isSpawning = false;
+        DownloadWindowClosed?.Invoke();
+    }
+
     public void endGame()
     {
         isSpawning = false;
@@ -121,6 +128,9 @@ public class DownloadManager : MonoBehaviour
         {
             timer.isCounting = true;
             yield return new WaitForSeconds(0.5f);
+            if(!isSpawning)
+                break;
+
             Vector3 spawnPoint = new Vector3(Random.Range(minSpawnPoint.position.x, maxSpawnPoint.position.x), minSpawnPoint.position.y, 0);
             Instantiate(documents[Random.Range(0,3)], spawnPoint, Quaternion.identity, myCanvas);
         }
