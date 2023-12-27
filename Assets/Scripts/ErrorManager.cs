@@ -5,6 +5,14 @@ using UnityEngine.UI;
 
 public class ErrorManager : MonoBehaviour
 {
+    [SerializeField]
+    public Timer timer;
+    public float targetTime;
+    public GameManager gameManager;
+    public bool isCompleted = false;
+    public bool isFailed = false;
+
+    [SerializeField]
     public float minWidth;
     public float maxWidth;
     public float minHeight;
@@ -12,13 +20,15 @@ public class ErrorManager : MonoBehaviour
     public float minDepth = 0;
 
     public Transform parentCanvas;
-    public float timer;
+    public float spawnTimer = 0.5f;
     public bool isSpawn = false;
 
     public Image[] errorWindow;
 
     public float count;
     public float closeCount;
+
+    public NotePadManager notepadManager;
 
     private void OnEnable()
     {
@@ -50,6 +60,16 @@ public class ErrorManager : MonoBehaviour
         {
             isSpawn = false;
         }
+
+        if(timer.currentTime <= 0 && count >= closeCount)
+        {
+            failedgame();
+        }
+
+        if(timer.currentTime > 0 && count == closeCount)
+        {
+            completeGame();
+        }
     }
 
     void OnErrorWindowClose()
@@ -59,8 +79,24 @@ public class ErrorManager : MonoBehaviour
 
     public void StartSpawning()
     {
+        //timer.targetTime = targetTime;
         isSpawn = true;
+        timer.isCounting = true;
         StartCoroutine(SpawnWindow());
+    }
+
+    public void failedgame()
+    {
+        isFailed = true;
+        timer.isCounting = false;
+        gameManager.FailedGame();
+    }
+
+    public void completeGame()
+    {
+        isCompleted = true;
+        timer.isCounting = false;
+        notepadManager.gameCompletes[1] = true;
     }
 
     IEnumerator SpawnWindow()
@@ -69,16 +105,18 @@ public class ErrorManager : MonoBehaviour
 
         while(isSpawn)
         {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(spawnTimer);
+
             if(closeCount >= count)
             {
                 break;
-            }    
+            }
+            
             //instantiate here
             Instantiate(errorWindow[Random.Range(0,2)],new Vector3 (Random.Range(minWidth,maxWidth),Random.Range(minHeight,maxHeight),minDepth),Quaternion.identity,parentCanvas);
             count += 1;
 
-            if(closeCount <0)
+            if(closeCount < 0)
             {
                 closeCount = 0;
             }

@@ -13,6 +13,8 @@ public class VideoSlider : MonoBehaviour
     public GameObject playButton;
     public GameObject pauseButton;
 
+    public NotePadManager notepadManager;
+
     private void Start()
     {
         videoSlider.value = 0;       
@@ -30,6 +32,7 @@ public class VideoSlider : MonoBehaviour
         if(videoSlider.value >= videoTime)
         {
             videoSlider.value = videoTime;
+            notepadManager.gameCompletes[3] = true;
         }
     }
 

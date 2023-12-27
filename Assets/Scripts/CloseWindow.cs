@@ -6,10 +6,12 @@ public class CloseWindow : MonoBehaviour
 {
 
     public float closeCount;
+    public bool isClosed = false;
 
     public void ShutDown()
     {
         gameObject.SetActive(false);
+        isClosed = true;
     }
 
     virtual public void DestroyWindow()

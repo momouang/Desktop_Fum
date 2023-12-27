@@ -40,6 +40,7 @@ public class DownloadManager : MonoBehaviour
     public Button downloadButton;
     public Transform myCanvas;
     public IELauncher ieLauncher;
+    public NotePadManager notepadManager;
 
     private void Start()
     {
@@ -53,7 +54,6 @@ public class DownloadManager : MonoBehaviour
         if(!isWindowOpened && downloadWindow.activeSelf == true)
         {
             isWindowOpened = true;
-            spawnDocuments();
         }
 
         if (isSpawning)
@@ -98,19 +98,22 @@ public class DownloadManager : MonoBehaviour
     {
         isSpawning = false;
         ieLauncher.isDownloaded = true;
-        slider.value = 20;
+        slider.value = slider.maxValue;
         downloadButton.interactable = true;
         timer.isCounting = false;
-        Debug.Log("endGame");
+        notepadManager.gameCompletes[2] = true;
+
         title.text = "Download Complete";
         status.text = "Download Complete";
         contentUp.text = "Saved:\nWindows_Update.exe from google.com";
         contentDown.text = "Downloaded: 100GB in sec\nDownloaded to C:/User/Downloads\nTransfer rate: 128 Kb/sec";
-        timerMessege.text = "times Up!";
+        timerMessege.text = "Complete";
     }
 
     public void spawnDocuments()
     {
+        slider.value = 0;
+        timer.currentTime = timer.targetTime;
         isSpawning = true;
         
         StartCoroutine(spawnFile());

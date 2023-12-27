@@ -10,6 +10,8 @@ public class PaintManager : MonoBehaviour
     public PaintEnemy enemy;
     public bool endGame = false;
 
+    public NotePadManager notepadManager;
+
     // Update is called once per frame
     void Update()
     {
@@ -30,6 +32,7 @@ public class PaintManager : MonoBehaviour
     {
         endGame = true;
         paintButton.interactable = true;
+        notepadManager.gameCompletes[0] = true;
     }
 
 }
