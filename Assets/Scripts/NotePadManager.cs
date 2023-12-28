@@ -28,10 +28,12 @@ public class NotePadManager : MonoBehaviour
 
         if (gameCompletes[0])
         {
-            for (int j = 0; j < 4; j++)
-            {
-                CheeringParticle[j].Play();
-            }
+            gameCompletes[0] = false;
+            CheeringParticle[0].Play();
+            CheeringParticle[1].Play();
+            CheeringParticle[2].Play();
+            CheeringParticle[3].Play();
+
             if (NotePadApp.isOpened)
             {
                 CrossNotes[0].SetActive(true);
@@ -42,10 +44,12 @@ public class NotePadManager : MonoBehaviour
 
         if (gameCompletes[1])
         {
-            for (int j = 0; j < 4; j++)
-            {
-                CheeringParticle[j].Play();
-            }
+            gameCompletes[1] = false;
+            CheeringParticle[0].Play();
+            CheeringParticle[1].Play();
+            CheeringParticle[2].Play();
+            CheeringParticle[3].Play();
+
             if (NotePadApp.isOpened)
             {
                 CrossNotes[1].SetActive(true);
@@ -56,6 +60,12 @@ public class NotePadManager : MonoBehaviour
 
         if (gameCompletes[2])
         {
+            gameCompletes[2] = false;
+            CheeringParticle[0].Play();
+            CheeringParticle[1].Play();
+            CheeringParticle[2].Play();
+            CheeringParticle[3].Play();
+
             for (int j = 0; j < 4; j++)
             {
                 CheeringParticle[j].Play();
@@ -70,6 +80,12 @@ public class NotePadManager : MonoBehaviour
 
         if (gameCompletes[3])
         {
+            gameCompletes[3] = false;
+            CheeringParticle[0].Play();
+            CheeringParticle[1].Play();
+            CheeringParticle[2].Play();
+            CheeringParticle[3].Play();
+
             for (int j = 0; j < 4; j++)
             {
                 CheeringParticle[j].Play();
@@ -84,6 +100,12 @@ public class NotePadManager : MonoBehaviour
 
         if (gameCompletes[4])
         {
+            gameCompletes[4] = false;
+            CheeringParticle[0].Play();
+            CheeringParticle[1].Play();
+            CheeringParticle[2].Play();
+            CheeringParticle[3].Play();
+
             for (int j = 0; j < 4; j++)
             {
                 CheeringParticle[j].Play();

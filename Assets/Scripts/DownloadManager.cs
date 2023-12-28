@@ -101,7 +101,11 @@ public class DownloadManager : MonoBehaviour
         slider.value = slider.maxValue;
         downloadButton.interactable = true;
         timer.isCounting = false;
-        notepadManager.gameCompletes[2] = true;
+
+        notepadManager.CheeringParticle[0].Play();
+        notepadManager.CheeringParticle[1].Play();
+        notepadManager.CheeringParticle[2].Play();
+        notepadManager.CheeringParticle[3].Play();
 
         title.text = "Download Complete";
         status.text = "Download Complete";

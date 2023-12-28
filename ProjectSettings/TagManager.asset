@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Error Window
   - Destroy Point
+  - Crump
   layers:
   - Default
   - TransparentFX

@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class StartupMenu : MonoBehaviour
 {
+    public GameManager gameManager;
     public Animator anim;
     public GameObject text;
     public GameObject loadingBar;
@@ -42,7 +43,7 @@ public class StartupMenu : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.Return))
             {
-                SceneManager.LoadScene(1);
+                gameManager.LoadMainScene();
             }
         }
     }

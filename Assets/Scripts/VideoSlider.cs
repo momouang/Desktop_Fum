@@ -9,6 +9,7 @@ public class VideoSlider : MonoBehaviour
     public Slider videoSlider;
     public float videoTime;
     public bool playing = false;
+    public bool playFinished = false;
 
     public GameObject playButton;
     public GameObject pauseButton;
@@ -29,10 +30,15 @@ public class VideoSlider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(videoSlider.value >= videoTime)
+        if(videoSlider.value >= videoTime && !playFinished)
         {
             videoSlider.value = videoTime;
-            notepadManager.gameCompletes[3] = true;
+            playFinished = true;
+
+            notepadManager.CheeringParticle[0].Play();
+            notepadManager.CheeringParticle[1].Play();
+            notepadManager.CheeringParticle[2].Play();
+            notepadManager.CheeringParticle[3].Play();
         }
     }
 

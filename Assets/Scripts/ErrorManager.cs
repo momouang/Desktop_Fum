@@ -51,6 +51,8 @@ public class ErrorManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isCompleted) return;
+
         if(Input.GetKeyDown(KeyCode.Space))
         {
             StartSpawning();
@@ -96,7 +98,10 @@ public class ErrorManager : MonoBehaviour
     {
         isCompleted = true;
         timer.isCounting = false;
-        notepadManager.gameCompletes[1] = true;
+        notepadManager.CheeringParticle[0].Play();
+        notepadManager.CheeringParticle[1].Play();
+        notepadManager.CheeringParticle[2].Play();
+        notepadManager.CheeringParticle[3].Play();
     }
 
     IEnumerator SpawnWindow()
