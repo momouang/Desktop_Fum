@@ -10,9 +10,6 @@ public class PaintPlayer : MonoBehaviour
     public Transform minWidth;
     public Transform maxWidth;
 
-    Rigidbody2D rb;
-
-    // Update is called once per frame
     void Update()
     {
         Move();
@@ -26,7 +23,6 @@ public class PaintPlayer : MonoBehaviour
         targetPosition.y = Mathf.Clamp(targetPosition.y, minHeight.position.y, maxHeight.position.y);
         gameObject.transform.position = targetPosition;
 
-        //Debug.Log(targetPosition);
     }
 
 

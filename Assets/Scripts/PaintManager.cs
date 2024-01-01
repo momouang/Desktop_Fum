@@ -10,9 +10,16 @@ public class PaintManager : MonoBehaviour
     public PaintEnemy enemy;
     public bool endGame = false;
 
+    public GameObject bombEffect;
+    public Animator bombAnim;
+
     public NotePadManager notepadManager;
 
-    // Update is called once per frame
+    private void Start()
+    {
+        bombEffect.SetActive(false);
+    }
+
     void Update()
     {
         if(enemy.damageCount <= 0 && !endGame)
@@ -36,6 +43,16 @@ public class PaintManager : MonoBehaviour
         notepadManager.CheeringParticle[1].Play();
         notepadManager.CheeringParticle[2].Play();
         notepadManager.CheeringParticle[3].Play();
+
+        bombEffect.SetActive(true);
+        bombAnim.Play("Bomb_Effect");
+        StartCoroutine(SetOffBomb());
+    }
+
+    IEnumerator SetOffBomb()
+    {
+        yield return new WaitForSeconds(2);
+        bombEffect.SetActive(false);
     }
 
 }

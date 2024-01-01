@@ -61,13 +61,11 @@ public class ChickManager : MonoBehaviour
             //-----------------------FLIP--------------------------
             if((transform.position.x- _destination.x) > 0 && facingRight)
             {
-                Debug.Log("FLip Left");
                 Flip(-180);
             }
 
             if((transform.position.x - _destination.x) < 0 && !facingRight)
             {
-                Debug.Log("FLip Right");
                 Flip(0);
             }
         }
@@ -135,7 +133,6 @@ public class ChickManager : MonoBehaviour
         Quaternion currentScale = Quaternion.Euler(0, d, 0);
         transform.rotation = currentScale;
         facingRight = !facingRight;
-        Debug.Log(currentScale);
     }
 
     public void Feed()

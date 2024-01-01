@@ -21,8 +21,9 @@ public class PaintEnemy : MonoBehaviour
     public Vector3 destination;
 
     public DrawMesh drawMesh;
+    public ParticleSystem smallBomb;
 
-    // Start is called before the first frame update
+
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
@@ -33,7 +34,6 @@ public class PaintEnemy : MonoBehaviour
         StartCoroutine(ChangeDestination());    
     }
 
-    // Update is called once per frame
     void Update()
     {
         Move();
@@ -47,9 +47,10 @@ public class PaintEnemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //Debug.Log("Hitting");
         if (collision.gameObject.CompareTag("Player"))
         {
+            Instantiate(smallBomb, collision.ClosestPoint(collision.transform.position), Quaternion.identity);
+            smallBomb.Play();
             damageCount--;
             GetComponent<Image>().color = Color.red;
             if (damageCount <= 0)
@@ -61,6 +62,7 @@ public class PaintEnemy : MonoBehaviour
             }
         }
     }
+
 
     private void OnTriggerExit2D(Collider2D collision)
     {

@@ -8,6 +8,7 @@ TagManager:
   - Error Window
   - Destroy Point
   - Crump
+  - Bug
   layers:
   - Default
   - TransparentFX
