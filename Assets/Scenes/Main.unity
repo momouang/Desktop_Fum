@@ -20285,7 +20285,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1611127188633982925, guid: ba3d77aae22f043a38eb50b0c5f9226a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba3d77aae22f043a38eb50b0c5f9226a, type: 3}
@@ -26874,7 +26874,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: U R not currently not conneted to the Internet :(
+  m_text: U R not currently conneted to the Internet :(
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 80047899302e64b118fe79a482e193d7, type: 2}
   m_sharedMaterial: {fileID: 5215205243028548747, guid: 80047899302e64b118fe79a482e193d7, type: 2}
@@ -29015,7 +29015,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1634380721
 RectTransform:
   m_ObjectHideFlags: 0

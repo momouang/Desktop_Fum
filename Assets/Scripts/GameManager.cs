@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
     {
         isplayingMusic = false;
         FindObjectOfType<AudioManager>().Stop("BG Music");
+        FindObjectOfType<AudioManager>().Stop("Terror Sound");
         SceneManager.LoadScene(2);
     }
 
