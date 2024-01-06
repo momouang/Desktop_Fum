@@ -108,6 +108,7 @@ public class ChickManager : MonoBehaviour
         yield return new WaitForSeconds(2);
         gameObject.GetComponent<Rigidbody2D>().simulated = true;
         chickedDropped = true;
+        FindObjectOfType<AudioManager>().Play("Chick Sound");
     }
 
     private void Move(Vector3 _destination)
@@ -140,6 +141,7 @@ public class ChickManager : MonoBehaviour
         if (isFeeding) return;
 
         isFeeding = true;
+        FindObjectOfType<AudioManager>().Play("Feed Sound");
         tempCrump = Instantiate(crump, spawnPoint.position, Quaternion.identity, parent);
         tempCrump.GetComponent<Rigidbody2D>().AddForce(-transform.right * 8);
 
@@ -150,6 +152,7 @@ public class ChickManager : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Crump"))
         {
+            FindObjectOfType<AudioManager>().Play("Chick Sound");
             Destroy(collision.gameObject);
         }
     }

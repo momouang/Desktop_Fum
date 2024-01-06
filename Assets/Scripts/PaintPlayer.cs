@@ -10,7 +10,7 @@ public class PaintPlayer : MonoBehaviour
     public Transform minWidth;
     public Transform maxWidth;
 
-    void Update()
+    void FixedUpdate()
     {
         Move();
     }

@@ -51,6 +51,8 @@ public class PaintEnemy : MonoBehaviour
         {
             Instantiate(smallBomb, collision.ClosestPoint(collision.transform.position), Quaternion.identity);
             smallBomb.Play();
+            FindObjectOfType<AudioManager>().Play("smallBomb Sound");
+
             damageCount--;
             GetComponent<Image>().color = Color.red;
             if (damageCount <= 0)
@@ -72,12 +74,12 @@ public class PaintEnemy : MonoBehaviour
     IEnumerator ChangeDestination()
     {
         //put animation here
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1.5f);
         while(true)
         {
             yield return new WaitForSeconds(2);
             destination = new Vector3(Random.Range(minWidth.position.x, maxWidth.position.x), Random.Range(minHeight.position.y, maxHeight.position.y), 0);
-
+            FindObjectOfType<AudioManager>().Play("paintEnemy Sound");
             Instantiate(dirt, gameObject.transform.position, Quaternion.identity,parent);
         }
     }

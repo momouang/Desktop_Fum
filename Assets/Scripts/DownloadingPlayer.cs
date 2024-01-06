@@ -16,7 +16,7 @@ public class DownloadingPlayer : MonoBehaviour
     {
         anim = GetComponent<Animator>();
     }
-    void Update()
+    void FixedUpdate()
     {
         Move();
 

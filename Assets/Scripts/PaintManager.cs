@@ -30,7 +30,6 @@ public class PaintManager : MonoBehaviour
 
     public void openPaintWindow()
     {
-        //paintWindow.SetActive(true);
         paintButton.interactable = false;
     }
 
@@ -39,6 +38,8 @@ public class PaintManager : MonoBehaviour
     {
         endGame = true;
         paintButton.interactable = true;
+        GameMonitor.GameCompleteTrigger(0);
+        FindObjectOfType<AudioManager>().Play("cheering Sound");
         notepadManager.CheeringParticle[0].Play();
         notepadManager.CheeringParticle[1].Play();
         notepadManager.CheeringParticle[2].Play();
@@ -46,6 +47,7 @@ public class PaintManager : MonoBehaviour
 
         bombEffect.SetActive(true);
         bombAnim.Play("Bomb_Effect");
+        FindObjectOfType<AudioManager>().Play("bigBomb Sound");
         StartCoroutine(SetOffBomb());
     }
 

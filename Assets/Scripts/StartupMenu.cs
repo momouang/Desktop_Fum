@@ -43,7 +43,9 @@ public class StartupMenu : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.Return))
             {
+                FindObjectOfType<AudioManager>().Play("Startup Sound");
                 gameManager.LoadMainScene();
+                gameManager.gameStarted = true;
             }
         }
     }

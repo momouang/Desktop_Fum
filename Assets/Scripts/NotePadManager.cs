@@ -10,6 +10,7 @@ public class NotePadManager : MonoBehaviour
     public ParticleSystem[] CheeringParticle;
 
     public bool[] gameCompletes;
+    public GameObject CongratsText;
 
     private void Start()
     {
@@ -17,120 +18,41 @@ public class NotePadManager : MonoBehaviour
         {
             CheeringParticle[j].Stop();
         }
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 6; i++)
         {
             CrossNotes[i].SetActive(false);
         }
     }
 
-    private void Update()
+    private void OnEnable()
     {
-
-        if (gameCompletes[0])
-        {
-            gameCompletes[0] = false;
-            CheeringParticle[0].Play();
-            CheeringParticle[1].Play();
-            CheeringParticle[2].Play();
-            CheeringParticle[3].Play();
-
-            if (NotePadApp.isOpened)
-            {
-                CrossNotes[0].SetActive(true);
-                closeWindow.isClosed = false;
-            }
-
-        }
-
-        if (gameCompletes[1])
-        {
-            gameCompletes[1] = false;
-            CheeringParticle[0].Play();
-            CheeringParticle[1].Play();
-            CheeringParticle[2].Play();
-            CheeringParticle[3].Play();
-
-            if (NotePadApp.isOpened)
-            {
-                CrossNotes[1].SetActive(true);
-                closeWindow.isClosed = false;
-            }
-
-        }
-
-        if (gameCompletes[2])
-        {
-            gameCompletes[2] = false;
-            CheeringParticle[0].Play();
-            CheeringParticle[1].Play();
-            CheeringParticle[2].Play();
-            CheeringParticle[3].Play();
-
-            for (int j = 0; j < 4; j++)
-            {
-                CheeringParticle[j].Play();
-            }
-            if (NotePadApp.isOpened)
-            {
-                CrossNotes[2].SetActive(true);
-                closeWindow.isClosed = false;
-            }
-
-        }
-
-        if (gameCompletes[3])
-        {
-            gameCompletes[3] = false;
-            CheeringParticle[0].Play();
-            CheeringParticle[1].Play();
-            CheeringParticle[2].Play();
-            CheeringParticle[3].Play();
-
-            for (int j = 0; j < 4; j++)
-            {
-                CheeringParticle[j].Play();
-            }
-            if (NotePadApp.isOpened)
-            {
-                CrossNotes[3].SetActive(true);
-                closeWindow.isClosed = false;
-            }
-
-        }
-
-        if (gameCompletes[4])
-        {
-            gameCompletes[4] = false;
-            CheeringParticle[0].Play();
-            CheeringParticle[1].Play();
-            CheeringParticle[2].Play();
-            CheeringParticle[3].Play();
-
-            for (int j = 0; j < 4; j++)
-            {
-                CheeringParticle[j].Play();
-            }
-            if (NotePadApp.isOpened)
-            {
-                CrossNotes[4].SetActive(true);
-                closeWindow.isClosed = false;
-            }
-
-        }
-
-
-
-        if (closeWindow.isClosed)
-    {
-        NotePadApp.isOpened = false;
-
-        for(int i= 0; i<5; i++)
-        {
-            CrossNotes[i].SetActive(false);
-        }
+        GameMonitor.GameComplete += OnGameComplete;
     }
 
+    private void OnDisable()
+    {
+        GameMonitor.GameComplete -= OnGameComplete;
     }
 
+    public void OnGameComplete(int state)
+    {
+        gameCompletes[state] = true;
+        CrossNotes[state].SetActive(true);
+
+        if(state == 4)
+        {
+            CrossNotes[5].SetActive(false);
+        }
+
+        foreach(bool n in gameCompletes)
+        {
+            if(n == false)
+            {
+                return;
+            }            
+        }
+        CongratsText.SetActive(true);
+        
+    }
 
 }

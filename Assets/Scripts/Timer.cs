@@ -65,15 +65,11 @@ public class Timer : MonoBehaviour
             currentTime = 0;
         }
 
-        displayTime(currentTime);
+        DisplayTime(currentTime);
     }
 
-    void displayTime(string realTime)
-    {
-        text.text = realTime;
-    }
 
-    void displayTime(float timetoDisplay)
+    void DisplayTime(float timetoDisplay)
     {
         if(timetoDisplay <= 0 && !timeUp)
         {

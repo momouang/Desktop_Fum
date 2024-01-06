@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.Video;
 
 public class VideoSlider : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class VideoSlider : MonoBehaviour
     public float videoTime;
     public bool playing = false;
     public bool playFinished = false;
+
+    [SerializeField] string videoFileName;
 
     public GameObject playButton;
     public GameObject pauseButton;
@@ -27,18 +30,21 @@ public class VideoSlider : MonoBehaviour
         videoSlider.maxValue = videoTime;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(videoSlider.value >= videoTime && !playFinished)
         {
-            videoSlider.value = videoTime;
+            playing = false;
+            videoSlider.value = 0;
             playFinished = true;
 
+            GameMonitor.GameCompleteTrigger(3);
+            FindObjectOfType<AudioManager>().Play("cheering Sound");
             notepadManager.CheeringParticle[0].Play();
             notepadManager.CheeringParticle[1].Play();
             notepadManager.CheeringParticle[2].Play();
             notepadManager.CheeringParticle[3].Play();
+
         }
     }
 
@@ -50,31 +56,42 @@ public class VideoSlider : MonoBehaviour
 
     public void Play()
     {
+        FindObjectOfType<AudioManager>().Play("BG Music");
         var videoplayer = GetComponent<UnityEngine.Video.VideoPlayer>();
         videoplayer.Play();
         pauseButton.SetActive(true);
         playButton.SetActive(false);
+        playing = true;
     }
 
     public void Pause()
     {
+        FindObjectOfType<AudioManager>().Pause("BG Music");
         var videoplayer = GetComponent<UnityEngine.Video.VideoPlayer>();
         videoplayer.Pause();
         playButton.SetActive(true);
         pauseButton.SetActive(false);
+        playing = false;
     }
 
     IEnumerator VideoPlaying()
     {
-        yield return new WaitForSeconds(3);
-        var videoplayer = GetComponent<UnityEngine.Video.VideoPlayer>();
+        yield return new WaitForSeconds(1);
+        VideoPlayer videoplayer = GetComponent<UnityEngine.Video.VideoPlayer>();
+        if (videoplayer)
+        {
+            string videoPath = System.IO.Path.Combine(Application.streamingAssetsPath, videoFileName);
+            videoplayer.url = videoPath;
+            videoplayer.Play();
+        }
 
-        videoplayer.Play();
-
-        while (playing)
+        while (true)
         {
             yield return new WaitForSeconds(1);
-            videoSlider.value += 1;
+            if (playing)
+            {
+                videoSlider.value += 1;
+            }
         }
     }
 }

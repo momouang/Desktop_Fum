@@ -102,6 +102,8 @@ public class DownloadManager : MonoBehaviour
         downloadButton.interactable = true;
         timer.isCounting = false;
 
+        GameMonitor.GameCompleteTrigger(2);
+        FindObjectOfType<AudioManager>().Play("cheering Sound");
         notepadManager.CheeringParticle[0].Play();
         notepadManager.CheeringParticle[1].Play();
         notepadManager.CheeringParticle[2].Play();
@@ -140,6 +142,7 @@ public class DownloadManager : MonoBehaviour
 
             Vector3 spawnPoint = new Vector3(Random.Range(minSpawnPoint.position.x, maxSpawnPoint.position.x), minSpawnPoint.position.y, 0);
             Instantiate(documents[Random.Range(0,3)], spawnPoint, Quaternion.identity, myCanvas);
+            FindObjectOfType<AudioManager>().Play("File Sound");
         }
     }
 }

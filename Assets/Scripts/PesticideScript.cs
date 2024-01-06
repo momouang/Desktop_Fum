@@ -6,46 +6,49 @@ using UnityEngine.UI;
 public class PesticideScript : MonoBehaviour
 {
     [SerializeField] public Camera mainCamera;
+
+    public GameObject shieldWindowImage;
     public Image Object;
     public Transform homePosition;
     public Transform hittingPoint;
+    public ParticleSystem hitParticle;
+    public Transform parent;
 
     public bool isOnHand = false;
+    public int destroyedNumber = 0;
 
     private void Update()
     {
         if(isOnHand)
         {
-            Vector3 mouseWorldPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 mouseWorldPosition = mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,Input.mousePosition.y,0f));
             Object.transform.position = mouseWorldPosition;
         }
         else
         {
             Object.transform.position = homePosition.position;
         }
-
-        if(Input.GetKeyDown(KeyCode.A))
-        {
-            isOnHand = false;
-        }
     }
 
     public void PickUp()
     {
         isOnHand = true;
+        shieldWindowImage.SetActive(false);
     }
 
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("Trigger");
-        if (collision.gameObject.tag == "Bug")
+        if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("Bug");
-            if (Input.GetMouseButtonDown(0))
+            Instantiate(hitParticle,hittingPoint.position, Quaternion.identity,parent);
+            FindObjectOfType<AudioManager>().Play("whipping Sound");
+            hitParticle.Play();
+
+            if (collision.gameObject.tag == "Bug")
             {
-                Debug.Log("Destroy");
-                Destroy(collision);
+                collision.gameObject.SetActive(false);
+                destroyedNumber++;
             }
         }
     }

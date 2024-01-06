@@ -607,6 +607,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 496598248}
   transitionTime: 1
+  isplayingMusic: 0
+  gameStarted: 0
 --- !u!4 &855200075
 Transform:
   m_ObjectHideFlags: 0

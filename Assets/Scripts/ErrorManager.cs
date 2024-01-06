@@ -41,14 +41,12 @@ public class ErrorManager : MonoBehaviour
     }
 
 
-    // Start is called before the first frame update
     void Start()
     {
         count = 0f;
         closeCount = -99f;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (isCompleted) return;
@@ -81,7 +79,6 @@ public class ErrorManager : MonoBehaviour
 
     public void StartSpawning()
     {
-        //timer.targetTime = targetTime;
         isSpawn = true;
         timer.isCounting = true;
         StartCoroutine(SpawnWindow());
@@ -98,6 +95,8 @@ public class ErrorManager : MonoBehaviour
     {
         isCompleted = true;
         timer.isCounting = false;
+        GameMonitor.GameCompleteTrigger(1);
+        FindObjectOfType<AudioManager>().Play("cheering Sound");
         notepadManager.CheeringParticle[0].Play();
         notepadManager.CheeringParticle[1].Play();
         notepadManager.CheeringParticle[2].Play();
@@ -118,8 +117,9 @@ public class ErrorManager : MonoBehaviour
             }
             
             //instantiate here
-            Instantiate(errorWindow[Random.Range(0,2)],new Vector3 (Random.Range(minWidth,maxWidth),Random.Range(minHeight,maxHeight),minDepth),Quaternion.identity,parentCanvas);
+            Instantiate(errorWindow[Random.Range(0,2)],new Vector3 (Random.Range(minWidth,maxWidth),Random.Range(minHeight,maxHeight),1),Quaternion.identity,parentCanvas);
             count += 1;
+            FindObjectOfType<AudioManager>().Play("Error Sound");
 
             if(closeCount < 0)
             {
