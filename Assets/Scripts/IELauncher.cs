@@ -7,6 +7,7 @@ public class IELauncher : AppLauncher
     public bool isDownloaded = false;
     public GameObject downloadWindow, explorerWindow;
 
+
     public override void OpenWindow()
     {
         if (isDownloaded)

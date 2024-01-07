@@ -22,8 +22,5 @@ public class PaintPlayer : MonoBehaviour
         targetPosition.x = Mathf.Clamp(targetPosition.x,minWidth.position.x,maxWidth.position.x);
         targetPosition.y = Mathf.Clamp(targetPosition.y, minHeight.position.y, maxHeight.position.y);
         gameObject.transform.position = targetPosition;
-
     }
-
-
 }

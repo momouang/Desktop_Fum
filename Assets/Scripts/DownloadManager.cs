@@ -39,8 +39,10 @@ public class DownloadManager : MonoBehaviour
     [Header("Others")]
     public Button downloadButton;
     public Transform myCanvas;
+
     public IELauncher ieLauncher;
     public NotePadManager notepadManager;
+
 
     private void Start()
     {
@@ -96,8 +98,8 @@ public class DownloadManager : MonoBehaviour
 
     public void endGame()
     {
-        isSpawning = false;
         ieLauncher.isDownloaded = true;
+        isSpawning = false;
         slider.value = slider.maxValue;
         downloadButton.interactable = true;
         timer.isCounting = false;

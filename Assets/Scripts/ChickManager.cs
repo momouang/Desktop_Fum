@@ -23,7 +23,8 @@ public class ChickManager : MonoBehaviour
     public Transform parent;
 
     public bool isFeeding = false;
-    public Transform crumpPosition;
+
+    Transform crumpPosition;
 
 
     private void Start()
